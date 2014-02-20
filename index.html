@@ -1,0 +1,53 @@
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>打字效果</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+
+<body>
+		<button id="startbutton" onclick="buttonclick();">开始打字</button>
+		<div id="autotype">
+
+#include "cv.h"<br />
+#include "highgui.h"<br />
+<br />
+using namespace std;<br />
+
+#pragma comment ( lib, "cxcore200.lib" )<br />
+#pragma comment ( lib, "cv200.lib" )<br />
+#pragma comment ( lib, "highgui200.lib" )<br />
+<br />
+#define FRAME_HEIGTH 400<br />
+#define FRAME_WIDTH 400<br />
+<br />
+_3DPoint g_ViewPoint(4,2,0);<br />
+_3DObject g_Object;<br />
+<br />
+const float weitiao = 0.2f;<br />
+int mouse_begin_x;<br />
+int mouse_begin_y;<br />
+
+_3DPlane GetRetinaPlane()<br />
+
+int main(int argc,char* argv[])<br />
+{<br />
+	InitObject();<br />
+	frame = cvCreateImage(cvSize(FRAME_WIDTH,FRAME_HEIGTH),IPL_DEPTH_8U,3);<br />
+	cvNamedWindow(WINDOW_NAME);<br />
+	cvSetMouseCallback(WINDOW_NAME, on_mouse, 0 );<br />
+	Draw_3D_Object();<br />
+	while(1)<br />
+	{<br />
+		cvShowImage(WINDOW_NAME,frame);<br />
+		cvWaitKey(2);<br />
+	}<br />
+	return 0;<br />
+}<br />
+
+
+		</div>
+</body>
+</html>
+

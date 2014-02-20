@@ -1,0 +1,18 @@
+body{
+	background:url('http://sandbox.runjs.cn/uploads/rs/486/oeoftnnu/bg.jpg');
+}
+
+
+
+#autotype{
+color: #83f352;
+font-family: Bitwise, monospace;
+font-weight: bold;
+text-shadow: 0.1em 0.1em 0.2em #83f352;
+cursor: none;
+font-size:15px;
+display:none;}
+
+button{
+	display:inline;
+}
