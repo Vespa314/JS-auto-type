@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>手动打字演示</title>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+</head>
+ <body>
+
+		<div id="autotype">
+
+#include "cv.h"<br />
+#include "highgui.h"<br />
+<br />
+using namespace std;<br />
+
+#pragma comment ( lib, "cxcore200.lib" )<br />
+#pragma comment ( lib, "cv200.lib" )<br />
+#pragma comment ( lib, "highgui200.lib" )<br />
+<br />
+#define FRAME_HEIGTH 400<br />
+#define FRAME_WIDTH 400<br />
+<br />
+_3DPoint g_ViewPoint(4,2,0);<br />
+_3DObject g_Object;<br />
+<br />
+const float weitiao = 0.2f;<br />
+int mouse_begin_x;<br />
+int mouse_begin_y;<br />
+
+_3DPlane GetRetinaPlane()<br />
+
+int main(int argc,char* argv[])<br />
+{<br />
+	InitObject();<br />
+	frame = cvCreateImage(cvSize(FRAME_WIDTH,FRAME_HEIGTH),IPL_DEPTH_8U,3);<br />
+	cvNamedWindow(WINDOW_NAME);<br />
+	cvSetMouseCallback(WINDOW_NAME, on_mouse, 0 );<br />
+	Draw_3D_Object();<br />
+	while(1)<br />
+	{<br />
+		cvShowImage(WINDOW_NAME,frame);<br />
+		cvWaitKey(2);<br />
+	}<br />
+	return 0;<br />
+}<br />
+
+		</div>
+</body>
+</html>
+<style>
+body{
+	background:#000;
+}
+
+#autotype{
+color: #83f352;
+font-family: Bitwise, monospace;
+font-weight: bold;
+text-shadow: 0.1em 0.1em 0.2em #83f352;
+cursor: none;
+font-size:15px;
+}
+</style>
+<script>
+$tt = $("#autotype");
+var str = $tt.html();
+var index = 0;
+$("#autotype").html('');
+
+$.fn.autotype = function() {
+	var current = str.substr(index, 1);
+
+	if (current == '<')
+    index = str.indexOf('>', index) + 1;
+  else
+    index++;
+
+  $tt.html(str.substring(0, index) + (index & 1 ? '_' : ''));
+};
+
+document.onkeydown = function (e) {
+$("#autotype").autotype();
+}
+</script>

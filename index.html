@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>´ò×ÖÐ§¹û</title>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<title>è‡ªåŠ¨æ‰“å­—æ¼”ç¤º</title>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
 </head>
 
 <body>
-		<button id="startbutton" onclick="buttonclick();">¿ªÊ¼´ò×Ö</button>
+		<button id="startbutton" onclick="buttonclick();">å¼€å§‹</button>
 		<div id="autotype">
 
 #include "cv.h"<br />
@@ -57,18 +57,17 @@ $.fn.autotype = function() {
 			var index = 0;
 			$(this).html('');
 			var timer = setInterval(function() {
-				
+
 				var current = str.substr(index, 1);
-				//¼ì²â±êÇ©
-				if (current == '<') 
+				if (current == '<')
 					index = str.indexOf('>', index) + 1;
-				else 
+				else
 					index++;
-				
-				
+
+
 				$tt.html(str.substring(0, index) + (index & 1 ? '_' : ''));
-				
-				if (index >= str.length){ 
+
+				if (index >= str.length){
 					clearInterval(timer);
 					$("#startbutton").css("display","inline");
 				}
@@ -86,8 +85,6 @@ function buttonclick(){
 body{
 	background:url('http://sandbox.runjs.cn/uploads/rs/486/oeoftnnu/bg.jpg');
 }
-
-
 
 #autotype{
 color: #83f352;
